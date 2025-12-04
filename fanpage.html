@@ -1,95 +1,151 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Fanpage & Website – ULIS Home away from home</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Fanpage & Website “ULIS Home away from home”</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    :root{
-      --bg1:#0f172a;--bg2:#1c0f24;--bg3:#3b1d2f;
-      --card:#221826;--text:#fefce8;--muted:#e7e5e4b3;--accent:#fb923c;
-    }
     *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}
     body{
       min-height:100vh;
-      background:
-        radial-gradient(circle at top left,rgba(248,250,252,0.06),transparent 55%),
-        radial-gradient(circle at bottom right,rgba(248,250,252,0.06),transparent 55%),
-        linear-gradient(145deg,var(--bg1) 0%,var(--bg2) 45%,var(--bg3) 100%);
-      color:var(--text);
-      display:flex;
-      justify-content:center;
-      align-items:flex-start;
+      background:linear-gradient(135deg,#fed7aa,#fb7185);
+      display:flex;align-items:flex-start;justify-content:center;
+      padding:2.5rem 1rem;
+      color:#1f2933;
     }
-    .wrap{
-      max-width:900px;width:100%;
-      padding:3.5rem 1.5rem 2.8rem;
+    .shell{
+      width:100%;max-width:960px;
+      background:rgba(255,255,255,0.96);
+      border-radius:1.8rem;
+      box-shadow:0 24px 60px rgba(148,27,74,0.35);
+      padding:2rem 2.3rem 2.4rem;
     }
-    a{text-decoration:none;color:inherit;}
-    .back{
-      display:inline-flex;align-items:center;gap:.4rem;font-size:.9rem;
-      padding:.4rem .9rem;border-radius:999px;
-      border:1px solid rgba(248,250,252,0.25);
-      background:rgba(15,23,42,0.85);cursor:pointer;
-      transition:background .15s ease,transform .1s ease,border-color .15s ease;
+    .top-row{
+      display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1.2rem;
     }
-    .back:hover{
-      background:rgba(15,23,42,1);border-color:rgba(248,250,252,0.4);transform:translateY(-1px);
+    .back-btn{
+      border-radius:999px;border:1px solid rgba(15,23,42,0.1);
+      background:#f9fafb;padding:.55rem 1rem;font-size:.85rem;
+      cursor:pointer;display:inline-flex;align-items:center;gap:.35rem;
+    }
+    .back-btn:hover{background:#edf2ff;}
+    .project-tag{
+      font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;
+      color:#6b7280;
     }
     h1{
-      margin-top:1.6rem;font-size:2.3rem;letter-spacing:-.05em;
-      background:linear-gradient(120deg,#fed7aa,var(--accent));
-      -webkit-background-clip:text;color:transparent;
+      font-size:1.9rem;margin-bottom:.2rem;
+      letter-spacing:-.03em;
     }
-    p{line-height:1.6;font-size:.96rem;}
-    .card{
-      margin-top:1.6rem;border-radius:1.35rem;
-      background:var(--card);padding:1.6rem 1.7rem;
-      border:1px solid rgba(248,250,252,0.22);
-      box-shadow:0 22px 48px rgba(15,23,42,0.95);
-      font-size:.95rem;
+    .subtitle{
+      font-size:.98rem;color:#4b5563;margin-bottom:1.3rem;
     }
-    h2{margin-top:.4rem;margin-bottom:.4rem;font-size:1.15rem;}
-    ul{margin-left:1.2rem;margin-top:.45rem;}
-    li{margin-bottom:.3rem;}
-    .muted{color:var(--muted);}
-    @media(max-width:640px){
-      .wrap{padding-top:3rem;}
-      h1{font-size:2rem;}
-      .card{padding:1.4rem 1.3rem;}
+    .badge{
+      display:inline-flex;align-items:center;gap:.35rem;
+      background:#fef3c7;border-radius:999px;
+      padding:.32rem .85rem;font-size:.8rem;color:#92400e;
+      margin-bottom:1.4rem;
+    }
+    .badge-dot{width:8px;height:8px;border-radius:999px;background:#f97316;}
+    h2{
+      font-size:1.15rem;margin-top:1.4rem;margin-bottom:.4rem;
+    }
+    p{margin-bottom:.35rem;font-size:.94rem;}
+    ul{margin-left:1.2rem;margin-bottom:.5rem;font-size:.94rem;}
+    li{margin-bottom:.25rem;}
+    .grid{
+      display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:1.5rem;margin-top:1.2rem;
+    }
+    .box{
+      background:#f9fafb;border-radius:1.2rem;
+      border:1px solid #e5e7eb;padding:1rem 1.2rem;
+    }
+    .pill-row{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.4rem;}
+    .pill{
+      font-size:.78rem;padding:.16rem .6rem;border-radius:999px;
+      border:1px solid #e5e7eb;background:#fff;color:#4b5563;
+    }
+    .hint{
+      font-size:.84rem;color:#6b7280;margin-top:.5rem;
+    }
+    a{color:#2563eb;}
+    @media (max-width:768px){
+      .shell{padding:1.6rem 1.4rem 2rem;border-radius:1.2rem;}
+      .grid{grid-template-columns:minmax(0,1fr);}
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <a href="index.html#activities" class="back">← Quay lại trang chính</a>
+<div class="shell">
+  <div class="top-row">
+    <button class="back-btn" onclick="window.location.href='index.html#activities'">
+      ← Quay lại trang chính
+    </button>
+    <div class="project-tag">ULIS HOME AWAY FROM HOME · TRỤ CỘT 01</div>
+  </div>
 
-    <h1>Fanpage &amp; Website “ULIS Home away from home”</h1>
-    <p class="muted">
-      Đây là “ngôi nhà online” của dự án – nơi sinh viên có thể cập nhật thông tin mới nhất,
-      đọc các bài chia sẻ, xem hình ảnh hoạt động và tìm tài nguyên hỗ trợ khi sống xa nhà.
-    </p>
+  <h1>Fanpage &amp; Website “ULIS Home away from home”</h1>
+  <p class="subtitle">
+    Đây là “ngôi nhà online” của dự án – nơi sinh viên xa nhà có thể tìm thấy thông tin,
+    câu chuyện thật và những gợi ý nhỏ để sống xa nhà mà vẫn thấy mình thuộc về ULIS.
+  </p>
 
-    <div class="card">
-      <h2>Một số chuyên mục gợi ý</h2>
+  <div class="badge">
+    <div class="badge-dot"></div>
+    Kênh kết nối &amp; cung cấp thông tin cho sinh viên ngoại tỉnh
+  </div>
+
+  <div class="grid">
+    <div>
+      <h2>1. Mục tiêu chính</h2>
       <ul>
-        <li><strong>Góc tân sinh viên:</strong> checklist nhập học, chuyện ký túc / trọ, mẹo làm quen bạn mới.</li>
-        <li><strong>Sống ở Hà Nội:</strong> ăn uống, đi lại, an toàn cá nhân, địa điểm “chill” gần ULIS.</li>
-        <li><strong>Học &amp; thi:</strong> kinh nghiệm học ngoại ngữ, thi cử, xin học bổng.</li>
-        <li><strong>Chuyện xa nhà:</strong> series tâm sự, thư gửi gia đình, câu chuyện truyền cảm hứng.</li>
+        <li>Cung cấp thông tin rõ ràng về các hoạt động hỗ trợ sinh viên xa nhà.</li>
+        <li>Chia sẻ kinh nghiệm sống xa nhà từ sinh viên, cựu sinh viên và giảng viên.</li>
+        <li>Tạo kênh để sinh viên dễ dàng gửi câu hỏi, tâm sự, nhu cầu hỗ trợ.</li>
       </ul>
 
-      <h2>Cách vận hành</h2>
+      <h2>2. Cấu trúc nội dung gợi ý</h2>
       <ul>
-        <li>Team nội dung gồm sinh viên nhiều khóa, có cố vấn là giảng viên/CLB truyền thông.</li>
-        <li>Lịch đăng bài đều đặn: 2–3 post/tuần, xen kẽ story hỏi đáp, poll cảm xúc.</li>
-        <li>Khi có workshop/talkshow, fanpage là nơi mở form đăng ký &amp; chia sẻ recap.</li>
+        <li><strong>Mục “Sống xa nhà 101”:</strong> cẩm nang nhà trọ, chi tiêu, nấu ăn đơn giản, đi lại ở Hà Nội…</li>
+        <li><strong>Mục “Chuyện nhỏ mà không nhỏ”:</strong> chia sẻ về áp lực học tập, nhớ nhà, mối quan hệ bạn bè.</li>
+        <li><strong>Mục “Người đồng hành”:</strong> giới thiệu anh/chị mentor, phòng ban &amp; CLB có thể hỗ trợ.</li>
+        <li><strong>Form liên hệ nhanh:</strong> để sinh viên gửi câu hỏi ẩn danh hoặc đăng ký nhận tư vấn.</li>
       </ul>
-      <p class="muted">
-        Tất cả nội dung online đều hướng tới mục tiêu cuối cùng: giúp sinh viên xa nhà
-        thấy rằng luôn có một cộng đồng ULIS ở ngay bên cạnh mình.
+    </div>
+
+    <div class="box">
+      <h2>3. Gợi ý chuyên mục &amp; series</h2>
+      <ul>
+        <li><strong>#ULISRoomTour:</strong> series giới thiệu góc học tập, phòng trọ của sinh viên xa nhà.</li>
+        <li><strong>#MộtNgàyCủaMình:</strong> vlog/ảnh “1 ngày đi học – đi làm thêm – về ký túc xá”.</li>
+        <li><strong>#HỏiNhanhĐápGọn:</strong> dạng Q&amp;A 60s, giải đáp câu hỏi hay gặp của tân sinh viên.</li>
+        <li><strong>#CrashLandingStory:</strong> câu chuyện lần đầu “rơi” xuống ULIS/Hà Nội nhưng đã vượt qua thế nào.</li>
+      </ul>
+
+      <div class="pill-row">
+        <span class="pill">Tone ấm áp, tôn trọng</span>
+        <span class="pill">Ngôn ngữ gần gũi, không phán xét</span>
+        <span class="pill">Ưu tiên ảnh thật ULIS</span>
+      </div>
+
+      <p class="hint">
+        Fanpage có thể đặt tên giống dự án, ví dụ:
+        <strong>“ULIS Home away from home – Ngôi nhà thứ hai của sinh viên xa nhà”</strong>.
       </p>
     </div>
   </div>
+
+  <h2>4. Lịch đăng &amp; vận hành</h2>
+  <ul>
+    <li>Giai đoạn đầu (1–2 tháng): 2–3 bài/tuần, tập trung giới thiệu dự án &amp; chia sẻ cẩm nang cơ bản.</li>
+    <li>Trước mỗi workshop/talkshow: đăng bài đếm ngược, giới thiệu khách mời, mở form đăng ký.</li>
+    <li>Sau hoạt động: đăng ảnh recap, trích dẫn, link tài liệu &amp; form góp ý.</li>
+  </ul>
+
+  <p class="hint">
+    Có thể tích hợp website/landing page (GitHub Pages, Google Sites…) và gắn link cố định trên fanpage,
+    để thầy cô/đơn vị trong trường cũng dễ xem thông tin chính thức của dự án.
+  </p>
+</div>
 </body>
 </html>
