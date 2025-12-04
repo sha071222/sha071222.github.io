@@ -3,16 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <title>ULIS Home away from home – Ngôi nhà thứ hai cho sinh viên xa nhà</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
   <style>
     :root{
-      --bg:#140b14;--bg-soft:#1e1421;--bg-softer:#241628;
+      --bg:#140b14;
+      --bg-soft:#1e1421;
       --card:rgba(34,24,38,0.96);
-      --accent:#fb923c;--accent-soft:rgba(251,146,60,0.16);
-      --accent-2:#f97316;--accent-3:#facc15;
-      --text:#fefce8;--muted:#e7e5e4b3;
+      --accent:#fb923c;
+      --accent-2:#f97316;
+      --accent-3:#facc15;
+      --text:#fefce8;
+      --muted:#e7e5e4b3;
       --border-subtle:rgba(248,250,252,0.18);
-      --radius-lg:1.35rem;--sidebar-width:260px;
+      --radius-lg:1.35rem;
+      --sidebar-width:260px;
     }
     *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}
     html,body{height:100%;scroll-behavior:smooth;}
@@ -24,12 +28,14 @@
       color:var(--text);line-height:1.6;overflow-x:hidden;
     }
     a{text-decoration:none;color:inherit;}
+
     .layout{display:flex;min-height:100vh;}
 
     /* SIDEBAR */
     .sidebar{
-      position:fixed;z-index:40;inset:0 auto 0 0;
-      width:var(--sidebar-width);padding:1.6rem 1.35rem;
+      position:fixed;inset:0 auto 0 0;z-index:40;
+      width:var(--sidebar-width);
+      padding:1.7rem 1.4rem 1.4rem;
       background:linear-gradient(145deg,#1b1023 0%,#261522 40%,#3b1d2f 100%);
       border-right:1px solid rgba(248,250,252,.12);
       display:flex;flex-direction:column;gap:1.6rem;
@@ -49,47 +55,49 @@
       content:"";position:absolute;inset:7px;border-radius:inherit;
       border:2px solid rgba(15,23,42,.8);
     }
-    .sidebar-title-main{font-size:.8rem;text-transform:uppercase;letter-spacing:.16em;font-weight:700;}
-    .sidebar-title-sub{font-size:.78rem;color:var(--muted);}
+    .sidebar-title-main{
+      font-size:.78rem;text-transform:uppercase;
+      letter-spacing:.22em;font-weight:700;
+    }
+    .sidebar-title-sub{font-size:.78rem;color:var(--muted);margin-top:.1rem;}
     .sidebar-badge{
       font-size:.75rem;padding:.35rem .7rem;border-radius:999px;
       border:1px solid rgba(248,250,252,.22);
-      background:rgba(15,23,42,.28);display:inline-flex;gap:.4rem;align-items:center;
+      background:rgba(15,23,42,.28);display:inline-flex;gap:.45rem;align-items:center;
+      margin-top:1.1rem;
     }
     .sidebar-badge-dot{
       width:9px;height:9px;border-radius:999px;
-      background:radial-gradient(circle,#4ade80 0,#22c55e 50%,#166534 100%);
+      background:radial-gradient(circle,#4ade80 0,#22c55e 55%,#166534 100%);
       box-shadow:0 0 9px rgba(74,222,128,.9);
     }
-
-    .sidebar-nav{margin-top:.4rem;display:flex;flex-direction:column;gap:.25rem;font-size:.9rem;}
-    .sidebar-nav-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:.2rem;}
+    .sidebar-nav{margin-top:1.6rem;display:flex;flex-direction:column;gap:.2rem;font-size:.88rem;}
+    .sidebar-nav-label{font-size:.76rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:.45rem;}
     .sidebar-nav a{
-      padding:.4rem .55rem;border-radius:999px;
-      color:var(--muted);display:flex;align-items:center;gap:.4rem;
+      padding:.48rem .65rem;border-radius:.7rem;
+      color:#f9fafb;display:flex;align-items:center;gap:.4rem;
       border:1px solid transparent;cursor:pointer;
-      transition:background .18s ease,color .18s ease,border-color .18s ease,transform .1s ease;
+      transition:background .18s,color .18s,border-color .18s,transform .1s;
+      font-weight:550;font-size:.86rem;
     }
-    .sidebar-nav a span.badge{
+    .sidebar-nav a .badge{
       font-size:.7rem;padding:.1rem .5rem;border-radius:999px;
       background:rgba(15,23,42,.35);border:1px solid rgba(248,250,252,.18);margin-left:auto;
     }
     .sidebar-nav a:hover{
-      background:rgba(15,23,42,.75);color:var(--text);
-      border-color:rgba(248,250,252,.25);transform:translateY(-1px);
+      background:rgba(15,23,42,.85);border-color:rgba(248,250,252,.25);
+      transform:translateY(-1px);
     }
     .sidebar-nav a.active{
-      background:linear-gradient(135deg,rgba(251,146,60,.22),rgba(250,204,21,.2));
+      background:linear-gradient(135deg,rgba(251,146,60,.25),rgba(250,204,21,.24));
       color:var(--text);border-color:rgba(251,191,36,.7);
     }
-
     .sidebar-footer{
       margin-top:auto;font-size:.8rem;color:var(--muted);
       border-top:1px solid rgba(248,250,252,.14);padding-top:.7rem;
     }
     .sidebar-footer strong{display:block;margin-bottom:.2rem;}
     .sidebar-footer small{display:block;margin-top:.3rem;opacity:.8;}
-
     .sidebar-overlay{
       position:fixed;inset:0;background:rgba(15,23,42,.7);
       backdrop-filter:blur(4px);opacity:0;pointer-events:none;z-index:30;
@@ -97,7 +105,7 @@
     }
     .sidebar-overlay.show{opacity:1;pointer-events:auto;}
 
-    /* CONTENT & TOPBAR */
+    /* CONTENT */
     .content{flex:1;margin-left:var(--sidebar-width);display:flex;flex-direction:column;min-height:100vh;}
     .topbar{
       position:sticky;top:0;z-index:10;
@@ -107,26 +115,33 @@
       border-bottom:1px solid rgba(248,250,252,.06);
       display:flex;align-items:center;justify-content:space-between;gap:1rem;
     }
-    .topbar-label{font-size:.85rem;color:var(--muted);}
+    .topbar-label{font-size:.84rem;color:var(--muted);}
     .topbar-cta{
-      font-size:.8rem;padding:.4rem .75rem;border-radius:999px;
-      border:1px solid rgba(248,250,252,.25);
-      background:rgba(15,23,42,.7);display:inline-flex;align-items:center;gap:.3rem;
-      cursor:pointer;transition:background .15s ease,transform .1s ease;
+      font-size:.8rem;padding:.45rem 1.1rem;border-radius:999px;
+      border:1px solid #e5e7eb;
+      background:#ffffff;
+      color:#111827;
+      display:inline-flex;align-items:center;gap:.35rem;
+      cursor:pointer;font-weight:650;
+      box-shadow:0 12px 32px rgba(15,23,42,.45);
+      transition:transform .1s,box-shadow .12s,filter .12s;
     }
-    .topbar-cta:hover{background:rgba(15,23,42,.95);transform:translateY(-1px);}
+    .topbar-cta:hover{
+      transform:translateY(-1px);
+      box-shadow:0 16px 40px rgba(15,23,42,.6);
+      filter:brightness(.97);
+    }
     .menu-button{
       display:none;width:34px;height:34px;border-radius:999px;
       border:1px solid rgba(248,250,252,.3);
       background:rgba(15,23,42,.9);align-items:center;justify-content:center;cursor:pointer;
     }
     .menu-icon{
-      width:18px;height:2px;border-radius:999px;
-      background:var(--text);position:relative;transition:background .15s ease;
+      width:18px;height:2px;border-radius:999px;background:var(--text);position:relative;transition:background .15s;
     }
     .menu-icon::before,.menu-icon::after{
       content:"";position:absolute;left:0;width:18px;height:2px;border-radius:999px;background:var(--text);
-      transition:transform .2s ease,top .2s ease,bottom .2s ease,opacity .2s ease;
+      transition:transform .2s,top .2s,bottom .2s,opacity .2s;
     }
     .menu-icon::before{top:-6px;}
     .menu-icon::after{bottom:-6px;}
@@ -137,18 +152,14 @@
     main{flex:1;}
     .section{padding:2.7rem 1.8rem 3rem;max-width:1080px;margin:0 auto;}
     .section-header{margin-bottom:1.9rem;}
-    .section-kicker{
-      font-size:.9rem;letter-spacing:.22em;text-transform:uppercase;
-      color:var(--muted);margin-bottom:.45rem;
-    }
-    .section-title{
-      font-size:2rem;font-weight:700;letter-spacing:-.035em;margin-bottom:.45rem;
-    }
+    .section-kicker{font-size:.9rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:.45rem;}
+    .section-title{font-size:2rem;font-weight:700;letter-spacing:-.035em;margin-bottom:.45rem;}
     .section-subtitle{font-size:.96rem;color:var(--muted);max-width:40rem;}
+    .highlight{color:#fef08a;font-weight:600;font-style:italic;}
 
     /* HERO */
     #hero{padding-top:2rem;}
-    .hero-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:2.4rem;align-items:center;}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1.1fr);gap:2.4rem;align-items:center;}
     .hero-badge{
       display:inline-flex;align-items:center;gap:.45rem;
       padding:.35rem .75rem;border-radius:999px;
@@ -176,7 +187,7 @@
       background:radial-gradient(circle at top left,#fed7aa,#fb923c,#f97316);
       color:#3a0f06;box-shadow:0 16px 40px rgba(248,171,88,.55);
       display:inline-flex;align-items:center;gap:.45rem;
-      transition:transform .15s ease,box-shadow .15s ease,filter .15s ease;
+      transition:transform .15s,box-shadow .15s,filter .15s;
     }
     .btn-primary:hover{
       transform:translateY(-1px) scale(1.01);
@@ -186,7 +197,7 @@
       padding:.8rem 1.4rem;border-radius:999px;border:1px solid rgba(248,250,252,.28);
       background:rgba(15,23,42,.85);color:var(--text);font-size:.9rem;cursor:pointer;
       display:inline-flex;align-items:center;gap:.4rem;
-      transition:background .15s ease,transform .1s ease,border-color .15s ease;
+      transition:background .15s,transform .1s,border-color .15s;
     }
     .btn-ghost:hover{background:rgba(15,23,42,.98);border-color:rgba(248,250,252,.4);transform:translateY(-1px);}
     .hero-meta{display:flex;flex-wrap:wrap;gap:1.2rem;font-size:.82rem;color:var(--muted);}
@@ -194,53 +205,70 @@
 
     .hero-visual{position:relative;}
     .hero-card{
-      padding:1.5rem 1.4rem;border-radius:1.5rem;
+      padding:1.7rem 1.7rem 1.5rem;
+      border-radius:var(--radius-lg);
       background:
         radial-gradient(circle at 0 0,rgba(254,202,202,.28),transparent 55%),
         radial-gradient(circle at 100% 0,rgba(253,230,138,.25),transparent 60%),
         rgba(15,23,42,.9);
       border:1px solid rgba(248,250,252,.4);
       box-shadow:0 24px 60px rgba(15,23,42,.92);
-      font-size:.88rem;position:relative;overflow:hidden;
+      font-size:.88rem;position:relative;
+      /* cho tag có thể nhô lên */
+      overflow:visible;
     }
-    .hero-card-header{display:flex;justify-content:space-between;margin-bottom:.8rem;align-items:center;}
-    .hero-card-title{font-size:.95rem;font-weight:600;}
-    .hero-card-tag{
-      font-size:.73rem;padding:.25rem .8rem;border-radius:999px;
-      background:var(--accent-soft);border:1px solid rgba(251,191,36,.85);color:#fffbeb;
+    .hero-card-inner{
+      display:flex;gap:1.2rem;align-items:flex-start;
     }
+    .hero-card-main{flex:1;min-width:0;}
+    .hero-card-title{font-size:1.02rem;font-weight:700;margin-bottom:.35rem;}
     .hero-card-row{font-size:.82rem;color:var(--muted);margin-bottom:.35rem;}
     .hero-card-row strong{color:var(--text);}
     .progress-bar{width:100%;height:6px;border-radius:999px;background:rgba(15,23,42,.85);overflow:hidden;margin:.6rem 0 1rem;}
     .progress-fill{width:75%;height:100%;background:linear-gradient(90deg,#4ade80,#facc15);}
-    .hero-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin-bottom:1rem;font-size:.78rem;color:var(--muted);}
+    .hero-card-grid{
+      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin-bottom:1rem;
+      font-size:.78rem;color:var(--muted);
+    }
     .hero-card-grid span{display:block;font-weight:600;color:var(--text);font-size:.9rem;}
-    .hero-card-footer{display:flex;justify-content:space-between;align-items:center;font-size:.76rem;color:var(--muted);}
+    .hero-card-footer{display:flex;justify-content:space-between;align-items:center;font-size:.76rem;color:var(--muted);margin-top:.3rem;}
+    .hero-card-footer strong{font-weight:650;}
+    .hero-image{
+      width:150px;flex-shrink:0;border-radius:1rem;
+      overflow:hidden;border:1px solid rgba(248,250,252,.45);
+      box-shadow:0 14px 32px rgba(15,23,42,.96);
+      align-self:flex-end;
+      margin-top:auto;
+    }
+    .hero-image img{width:100%;height:100%;object-fit:cover;}
     .avatar-group{display:flex;align-items:center;}
     .avatar{
       width:24px;height:24px;border-radius:999px;border:2px solid rgba(15,23,42,.95);
       margin-right:-6px;box-shadow:0 0 0 1px rgba(248,250,252,.3);
       background-size:cover;background-position:center;
     }
-    .avatar:nth-child(1){background-image:url("https://images.pexels.com/photos/7683700/pexels-photo-7683700.jpeg?auto=compress&cs=tinysrgb&w=120");}
-    .avatar:nth-child(2){background-image:url("https://images.pexels.com/photos/1184585/pexels-photo-1184585.jpeg?auto=compress&cs=tinysrgb&w=120");}
-    .avatar:nth-child(3){background-image:url("https://images.pexels.com/photos/1181570/pexels-photo-1181570.jpeg?auto=compress&cs=tinysrgb&w=120");}
+    .avatar:nth-child(1){background-image:url("https://ulis.vnu.edu.vn/files/uploads/2022/02/272979345_454447469717939_5015226389747247156_n-1024x684.jpg");}
+    .avatar:nth-child(2){background-image:url("https://ulis.vnu.edu.vn/files/uploads/2022/02/258015872_454447539717932_3946034580979899798_n-1024x684.jpg");}
+    .avatar:nth-child(3){background-image:url("https://ulis.vnu.edu.vn/files/uploads/2022/01/ULISbyLienV4-Copy-1024x683.jpg");}
     .hero-floating-tag{
-      position:absolute;top:-14px;right:-6px;padding:.45rem .8rem;border-radius:999px;
-      background:rgba(15,23,42,.98);border:1px solid rgba(251,191,36,.9);
-      font-size:.72rem;display:inline-flex;align-items:center;gap:.35rem;
+      position:absolute;
+      /* đẩy lên trên và sát phải hơn để ôm góc khung */
+      top:-12px;
+      right:18px;
+      padding:.38rem .8rem;
+      border-radius:999px;
+      background:rgba(15,23,42,.98);
+      border:1px solid rgba(251,191,36,.9);
+      font-size:.72rem;
+      display:inline-flex;
+      align-items:center;
+      gap:.35rem;
       box-shadow:0 16px 40px rgba(15,23,42,.96);
     }
     .hero-floating-dot{
       width:8px;height:8px;border-radius:999px;background:#f97316;
       box-shadow:0 0 9px rgba(248,171,88,.95);
     }
-    .hero-photo{
-      position:absolute;inset:auto -14px -22px auto;width:180px;height:120px;
-      border-radius:1rem;overflow:hidden;border:1px solid rgba(248,250,252,.45);
-      box-shadow:0 18px 35px rgba(15,23,42,.95);
-    }
-    .hero-photo img{width:100%;height:100%;object-fit:cover;transform:scale(1.05);}
 
     /* GENERIC CARDS */
     .layout-2col{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:1.9rem;align-items:flex-start;}
@@ -258,27 +286,59 @@
       padding:.2rem .6rem;border-radius:999px;border:1px solid rgba(248,250,252,.25);
       background:rgba(15,23,42,.7);color:var(--muted);
     }
-    .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem;}
 
-    .feature-card{
-      background:var(--card);border-radius:var(--radius-lg);
-      border:1px solid rgba(248,250,252,.18);padding:1.2rem 1.25rem;
-      box-shadow:0 18px 40px rgba(15,23,42,.9);font-size:.88rem;position:relative;
+    /* PILLARS */
+    .pillars{
+      margin-top:.5rem;
+      background:radial-gradient(circle at top,rgba(15,23,42,.7),rgba(12,10,23,.3));
+      border-radius:1.6rem;
+      border:1px solid rgba(248,250,252,.16);
+      padding:1.5rem 1.5rem 1.6rem;
+      box-shadow:0 20px 48px rgba(15,23,42,.95);
     }
-    .feature-icon{
-      width:28px;height:28px;border-radius:999px;
-      background:radial-gradient(circle at 30% 30%,#fed7aa,#fb923c);
-      display:flex;align-items:center;justify-content:center;margin-bottom:.7rem;font-size:1.25rem;
+    .pillars-grid{
+      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1.1rem;font-size:.88rem;
     }
-    .feature-title{font-weight:600;margin-bottom:.3rem;font-size:.96rem;}
-    .tag{
-      display:inline-block;margin-top:.5rem;font-size:.72rem;padding:.2rem .6rem;
-      border-radius:999px;border:1px solid rgba(248,250,252,.22);
-      color:var(--muted);background:rgba(15,23,42,.7);
+    .pillar{
+      display:flex;flex-direction:column;gap:.4rem;
+      padding:.7rem .6rem .5rem;
+      border-radius:1rem;
     }
-    .highlight{color:var(--accent-3);font-weight:600;}
+    .pillar-title-line{
+      font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;
+      color:rgba(248,250,252,.6);
+    }
+    .pillar-name{font-weight:650;font-size:.96rem;margin-top:.15rem;}
+    .pillar-desc{color:var(--muted);font-size:.86rem;}
+    .pillar-tag{
+      display:inline-block;margin-top:.35rem;font-size:.74rem;
+      padding:.18rem .55rem;border-radius:999px;
+      border:1px solid rgba(248,250,252,.22);
+      background:rgba(15,23,42,.85);color:var(--muted);
+    }
+    .pillars-actions{
+      display:flex;
+      gap:1rem;
+      margin-top:1.5rem;
+    }
+    .btn-outline{
+      flex:1;
+      padding:.7rem 1.4rem;border-radius:999px;
+      border:1px solid rgba(248,250,252,.32);
+      background:rgba(15,23,42,.9);
+      font-size:.86rem;font-weight:500;color:#f9fafb;
+      display:inline-flex;align-items:center;justify-content:center;gap:.4rem;
+      cursor:pointer;transition:background .15s,transform .1s,border-color .15s;
+    }
+    .btn-outline:hover{
+      background:rgba(15,23,42,1);
+      border-color:rgba(251,191,36,.8);
+      transform:translateY(-1px);
+    }
 
-    /* RESOURCES (materials) */
+    /* RESOURCES */
+    #resources .section-title{font-size:1.9rem;}
     .resources-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:1.8rem;align-items:stretch;}
     .gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem;}
     .gallery-item{
@@ -289,13 +349,14 @@
     .gallery-item.large{grid-row:span 2;}
     .gallery-item img{width:100%;height:100%;object-fit:cover;display:block;}
     .gallery-label{
-      position:absolute;left:.8rem;right:.8rem;bottom:.7rem;
-      font-size:.78rem;background:linear-gradient(90deg,rgba(15,23,42,.88),rgba(15,23,42,.55));
-      padding:.3rem .6rem;border-radius:999px;display:inline-flex;align-items:center;gap:.3rem;
+      position:absolute;left:.8rem;right:auto;bottom:.7rem;
+      font-size:.78rem;background:linear-gradient(90deg,rgba(15,23,42,.9),rgba(15,23,42,.55));
+      padding:.25rem .65rem;border-radius:999px;display:inline-flex;align-items:center;gap:.3rem;
+      max-width:80%;
     }
     .gallery-pill-dot{width:7px;height:7px;border-radius:999px;background:#f97316;}
-    .video-card video{
-      width:100%;min-height:210px;border-radius:1rem;
+    .video-card iframe{
+      width:100%;min-height:230px;border-radius:1rem;
       border:1px solid rgba(248,250,252,.4);box-shadow:0 18px 40px rgba(15,23,42,.9);
       background:#020617;
     }
@@ -306,16 +367,32 @@
     .testimonial{
       background:var(--card);border-radius:1.1rem;
       border:1px solid rgba(248,250,252,.16);
-      padding:1rem 1.1rem;box-shadow:0 16px 36px rgba(15,23,42,.88);
+      padding:1rem 1.1rem 1.15rem;box-shadow:0 16px 36px rgba(15,23,42,.88);
+      position:relative;overflow:hidden;
     }
-    .testimonial-name{font-weight:600;margin-bottom:.1rem;}
+    .testimonial::before{
+      content:"“";position:absolute;right:1.1rem;top:-.3rem;
+      font-size:3.3rem;color:rgba(251,191,36,.12);font-weight:700;
+    }
+    .testimonial-name{font-weight:650;margin-bottom:.1rem;}
     .testimonial-tag{font-size:.78rem;color:var(--muted);margin-bottom:.4rem;}
+    .testimonial-text{font-style:italic;color:#fef9c3;font-size:.9rem;}
 
     /* FAQ */
-    .faq-list{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:1.6rem;font-size:.9rem;}
-    .faq-item{margin-bottom:1rem;}
+    .faq-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1.1rem;
+      font-size:.9rem;
+    }
+    .faq-item{
+      border-radius:.9rem;
+      background:rgba(15,23,42,.7);
+      padding:.9rem 1rem;
+      border:1px solid rgba(248,250,252,.12);
+    }
     .faq-question{font-weight:600;margin-bottom:.25rem;}
-    .faq-note{font-size:.82rem;color:var(--muted);margin-top:.4rem;}
+    .faq-note{font-size:.82rem;color:var(--muted);margin-top:1rem;}
 
     /* TEAM & CONTACT */
     .team-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem 1.3rem;font-size:.88rem;margin-top:.6rem;}
@@ -359,15 +436,17 @@
       .topbar{padding-inline:1.1rem;}
       .section{padding-inline:1.2rem;}
       .layout-2col{grid-template-columns:minmax(0,1fr);}
-      .grid-3{grid-template-columns:minmax(0,1fr);}
       .testimonials{grid-template-columns:minmax(0,1fr);}
-      .faq-list{grid-template-columns:minmax(0,1fr);}
+      .faq-grid{grid-template-columns:minmax(0,1fr);}
       .cta{grid-template-columns:minmax(0,1fr);}
+      .pillars-grid{grid-template-columns:minmax(0,1fr);}
+      .pillars-actions{flex-direction:column;}
     }
     @media (max-width:640px){
       .hero-grid{gap:1.8rem;}
-      .hero-card{padding:1.2rem 1.15rem;}
-      .hero-photo{display:none;}
+      .hero-card{padding:1.5rem 1.3rem 1.4rem;}
+      .hero-card-inner{flex-direction:column;}
+      .hero-image{width:100%;max-width:220px;margin-top:.6rem;align-self:flex-start;}
       .section{padding-block:2.1rem 2.6rem;}
       .team-grid{grid-template-columns:minmax(0,1fr);}
       .gallery{grid-template-columns:minmax(0,1fr);}
@@ -386,27 +465,27 @@
           <div class="sidebar-title-sub">Sinh viên xa nhà – không một mình</div>
         </div>
       </div>
-      <div class="sidebar-badge" style="margin-top:1rem;">
+      <div class="sidebar-badge">
         <div class="sidebar-badge-dot"></div>
-        <span>Đề xuất dự án – FLF1007 Nhóm 24</span>
+        <span>Đề xuất dự án – FLF1007 NHÓM 24</span>
       </div>
     </div>
 
     <nav class="sidebar-nav">
-      <div class="sidebar-nav-label">Menu</div>
-      <a href="#hero" data-target="hero" class="active">✨ Tổng quan</a>
-      <a href="#about" data-target="about">🧭 Bối cảnh &amp; mục tiêu</a>
-      <a href="#activities" data-target="activities">📌 3 trụ cột giải pháp <span class="badge">Online &amp; offline</span></a>
-      <a href="#resources" data-target="resources">📚 Góc tài nguyên &amp; cảm hứng</a>
-      <a href="#community" data-target="community">🤝 Cộng đồng &amp; trải nghiệm</a>
-      <a href="#faq" data-target="faq">❓ FAQ – Câu hỏi thường gặp</a>
-      <a href="#team" data-target="team">👥 Nhóm 24 &amp; liên hệ</a>
+      <div class="sidebar-nav-label">MENU</div>
+      <a href="#hero" data-target="hero" class="active">TỔNG QUAN</a>
+      <a href="#about" data-target="about">BỐI CẢNH &amp; MỤC TIÊU</a>
+      <a href="#activities" data-target="activities">3 TRỤ CỘT GIẢI PHÁP <span class="badge">ONLINE · OFFLINE</span></a>
+      <a href="#resources" data-target="resources">GÓC TÀI NGUYÊN &amp; CẢM HỨNG</a>
+      <a href="#community" data-target="community">CỘNG ĐỒNG &amp; TRẢI NGHIỆM</a>
+      <a href="#faq" data-target="faq">FAQ – CÂU HỎI THƯỜNG GẶP</a>
+      <a href="#team" data-target="team">NHÓM 24 &amp; LIÊN HỆ</a>
     </nav>
 
     <div class="sidebar-footer">
-      <strong>ULIS – Ngôi nhà thứ hai</strong>
-      <span>Trường Đại học Ngoại ngữ, ĐHQGHN</span>
-      <small>Hà Nội, 2025</small>
+      <strong>ULIS – NGÔI NHÀ THỨ HAI</strong>
+      <span>Trường Đại học Ngoại ngữ · ĐHQGHN</span>
+      <small>Hà Nội · 2025</small>
     </div>
   </aside>
 
@@ -419,10 +498,10 @@
         <div class="menu-icon"></div>
       </button>
       <div class="topbar-label">
-        🌇 Dự án lan tỏa thông điệp <strong>“ULIS – ngôi nhà thứ hai”</strong> dành cho sinh viên xa nhà.
+        Dự án lan tỏa thông điệp <strong>“ULIS – NGÔI NHÀ THỨ HAI”</strong> dành cho sinh viên xa nhà.
       </div>
       <button class="topbar-cta" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">
-        Liên hệ dự án <span style="font-size:1rem;">↗</span>
+        LIÊN HỆ DỰ ÁN <span style="font-size:1rem;">↗</span>
       </button>
     </header>
 
@@ -433,7 +512,7 @@
           <div>
             <div class="hero-badge">
               <div class="hero-dot"></div>
-              <span>Trường Đại học Ngoại ngữ – ĐHQGHN · Hà Nội 2025</span>
+              <span>TRƯỜNG ĐẠI HỌC NGOẠI NGỮ – ĐHQGHN · HÀ NỘI 2025</span>
             </div>
             <h1 class="hero-title">
               <span>“ULIS Home away from home”</span><br/>
@@ -442,7 +521,7 @@
             <p class="hero-subtitle">
               Một không gian ấm áp – nơi sinh viên ngoại tỉnh được chào đón, lắng nghe và đồng hành
               trong hành trình thích nghi với cuộc sống đại học tại ULIS và Hà Nội.
-            </p>
+            <!-- removed closing p -->
 
             <div class="hero-actions">
               <button class="btn-primary" onclick="document.querySelector('#activities').scrollIntoView({behavior:'smooth'})">
@@ -459,11 +538,11 @@
                 Thời gian triển khai dự kiến
               </div>
               <div>
-                <span>Nhóm 24</span>
+                <span>NHÓM 24</span>
                 Lớp CNTT&amp;TT FLF1007
               </div>
               <div>
-                <span>3 trụ cột</span>
+                <span>3 TRỤ CỘT</span>
                 Fanpage · Workshop · Talkshow
               </div>
             </div>
@@ -471,50 +550,54 @@
 
           <div class="hero-visual">
             <div class="hero-card">
-              <div class="hero-card-header">
-                <p class="hero-card-title">Sinh viên xa nhà tại ULIS</p>
-                <span class="hero-card-tag">Nhóm đối tượng chính</span>
-              </div>
-              <p class="hero-card-row">
-                <strong>Thách thức:</strong> nhớ nhà, sốc môi trường, áp lực học tập &amp; cô đơn.
-              </p>
-              <p class="hero-card-row">
-                <strong>Giải pháp:</strong> <span class="highlight">xây dựng cộng đồng ấm áp</span>
-                để các bạn có nơi chia sẻ, hỏi han và tìm kiếm sự trợ giúp kịp thời.
-              </p>
-              <div class="progress-bar"><div class="progress-fill"></div></div>
-              <div class="hero-card-grid">
-                <div>
-                  <span>01</span>
-                  Fanpage / website hỗ trợ
-                </div>
-                <div>
-                  <span>02</span>
-                  Workshop kỹ năng sống xa nhà
-                </div>
-                <div>
-                  <span>03</span>
-                  Talkshow “Cà phê cùng anh/chị khóa trên”
-                </div>
-              </div>
-              <div class="hero-card-footer">
-                <div>
-                  Đơn vị chủ quản<br/>
-                  <strong>Trường ĐH Ngoại ngữ – ĐHQGHN</strong>
-                </div>
-                <div class="avatar-group" aria-hidden="true">
-                  <div class="avatar"></div><div class="avatar"></div><div class="avatar"></div>
-                </div>
-              </div>
-
               <div class="hero-floating-tag">
                 <div class="hero-floating-dot"></div>
-                <span>Lan tỏa thông điệp “ULIS – ngôi nhà thứ hai”</span>
+                <span>Lan tỏa thông điệp “ULIS – ngôi nhà thứ hai”.</span>
               </div>
 
-              <div class="hero-photo">
-                <img src="https://images.pexels.com/photos/7683887/pexels-photo-7683887.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                     alt="Nhóm sinh viên cùng nhau đi trong khuôn viên trường">
+              <div class="hero-card-inner">
+                <div class="hero-card-main">
+                  <p class="hero-card-title">Sinh viên xa nhà tại ULIS<!-- removed closing p -->
+                  <p class="hero-card-row">
+                    <strong>Thách thức:</strong> nhớ nhà, sốc môi trường, áp lực học tập &amp; cô đơn.
+                  <!-- removed closing p -->
+                  <p class="hero-card-row">
+                    <strong>Giải pháp:</strong>
+                    <span class="highlight">xây dựng cộng đồng ấm áp</span>
+                    để các bạn có nơi chia sẻ, hỏi han và tìm kiếm sự trợ giúp kịp thời.
+                  <!-- removed closing p -->
+                  <div class="progress-bar"><div class="progress-fill"></div></div>
+                  <div class="hero-card-grid">
+                    <div>
+                      <span>01</span>
+                      Fanpage / website hỗ trợ
+                    </div>
+                    <div>
+                      <span>02</span>
+                      Workshop kỹ năng sống xa nhà
+                    </div>
+                    <div>
+                      <span>03</span>
+                      Talkshow “Cà phê cùng anh/chị khóa trên”
+                    </div>
+                  </div>
+                  <div class="hero-card-footer">
+                    <div>
+                      Đơn vị chủ quản<br/>
+                      <strong>Trường ĐH Ngoại ngữ – ĐHQGHN</strong>
+                    </div>
+                    <div class="avatar-group" aria-hidden="true">
+                      <div class="avatar"></div><div class="avatar"></div><div class="avatar"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="hero-image">
+                  <img
+                    src="https://ulis.vnu.edu.vn/files/uploads/2022/02/258015872_454447539717932_3946034580979899798_n-1024x684.jpg"
+                    alt="Sinh viên ULIS chào đón tân sinh viên tại khu vực backdrop trước sảnh trường."
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -524,13 +607,13 @@
       <!-- ABOUT -->
       <section class="section" id="about">
         <div class="section-header">
-          <p class="section-kicker">GIỚI THIỆU DỰ ÁN</p>
+          <p class="section-kicker">GIỚI THIỆU DỰ ÁN<!-- removed closing p -->
           <h2 class="section-title">Khi “đi học xa” trở thành một bước ngoặt lớn</h2>
           <p class="section-subtitle">
             Nhiều tân sinh viên ULIS lần đầu sống xa gia đình, phải tự lo chỗ ở, ăn uống,
             học tập và các mối quan hệ mới. Không ít bạn rơi vào cảm giác lạc lõng,
             stress hoặc thu mình, dù xung quanh là một môi trường rất năng động.
-          </p>
+          <!-- removed closing p -->
         </div>
 
         <div class="layout-2col">
@@ -545,7 +628,7 @@
               <p class="muted" style="margin-top:0.6rem;">
                 Dự án tập trung vào việc <span class="highlight">tạo môi trường kết nối ấm áp</span> –
                 nơi sinh viên xa nhà cảm thấy an toàn để chia sẻ, xin lời khuyên và xây dựng mạng lưới bạn bè.
-              </p>
+              <!-- removed closing p -->
             </div>
           </div>
           <div>
@@ -570,107 +653,115 @@
       <!-- ACTIVITIES -->
       <section class="section" id="activities">
         <div class="section-header">
-          <p class="section-kicker">3 TRỤ CỘT GIẢI PHÁP</p>
+          <p class="section-kicker">3 TRỤ CỘT GIẢI PHÁP<!-- removed closing p -->
           <h2 class="section-title">Từ online đến offline, luôn có một nơi để quay về</h2>
           <p class="section-subtitle">
             Bộ hoạt động được thiết kế như một hành trình: bắt đầu từ việc tìm thông tin – kết nối,
             sau đó là trải nghiệm trực tiếp và cuối cùng là duy trì cộng đồng.
-          </p>
+          <!-- removed closing p -->
         </div>
 
-        <div class="grid-3">
-          <article class="feature-card">
-            <div class="feature-icon">🌐</div>
-            <h3 class="feature-title">Fanpage &amp; website “ULIS Home away from home”</h3>
-            <p class="muted">
-              Cung cấp cẩm nang sống xa nhà, câu chuyện thật từ sinh viên nhiều khóa,
-              thông tin học bổng, nhà trọ, tips đi chợ – nấu ăn – đi lại quanh ULIS.
-            </p>
-            <span class="tag">Hub thông tin &amp; chia sẻ</span><br><br>
-            <a href="fanpage.html" class="btn-ghost" style="padding:0.5rem 1rem;font-size:.8rem;">Xem trang chi tiết ↗</a>
-          </article>
+        <div class="pillars">
+          <div class="pillars-grid">
+            <div class="pillar">
+              <div class="pillar-title-line">TRỤ CỘT 01</div>
+              <div class="pillar-name">Fanpage &amp; Website “ULIS Home away from home”</div>
+              <p class="pillar-desc">
+                Hub thông tin nơi sinh viên tìm cẩm nang sống xa nhà, chia sẻ câu chuyện thật
+                và cập nhật các hoạt động mới nhất của dự án.
+              <!-- removed closing p -->
+              <span class="pillar-tag">Kênh kết nối &amp; cung cấp thông tin</span>
+            </div>
 
-          <article class="feature-card">
-            <div class="feature-icon">🎓</div>
-            <h3 class="feature-title">Chuỗi workshop “Sống xa nhà mà vẫn vui”</h3>
-            <p class="muted">
-              02 workshop tương tác về quản lý chi tiêu, tự chăm sóc bản thân, cân bằng
-              học – chơi và xử lý “khủng hoảng nhỏ” trong năm nhất.
-            </p>
-            <span class="tag">Thực hành kỹ năng mềm</span><br><br>
-            <a href="workshop.html" class="btn-ghost" style="padding:0.5rem 1rem;font-size:.8rem;">Xem lịch &amp; nội dung ↗</a>
-          </article>
+            <div class="pillar">
+              <div class="pillar-title-line">TRỤ CỘT 02</div>
+              <div class="pillar-name">Chuỗi workshop “Sống xa nhà mà vẫn vui”</div>
+              <p class="pillar-desc">
+                02 workshop thực hành về quản lý tài chính, tự chăm sóc bản thân, cân bằng
+                học – chơi và tìm người đồng hành trong năm nhất.
+              <!-- removed closing p -->
+              <span class="pillar-tag">Thực hành kỹ năng mềm</span>
+            </div>
 
-          <article class="feature-card">
-            <div class="feature-icon">☕</div>
-            <h3 class="feature-title">Talkshow “Cà phê cùng anh/chị khóa trên”</h3>
-            <p class="muted">
-              Không khí như một buổi hẹn cà phê: tân sinh viên đặt câu hỏi, nghe
-              những “trải lòng thật” về việc học, đi làm thêm, tham gia CLB và giữ sức khỏe tinh thần.
-            </p>
-            <span class="tag">Đồng hành qua nhiều thế hệ</span><br><br>
-            <a href="talkshow.html" class="btn-ghost" style="padding:0.5rem 1rem;font-size:.8rem;">Xem format talkshow ↗</a>
-          </article>
+            <div class="pillar">
+              <div class="pillar-title-line">TRỤ CỘT 03</div>
+              <div class="pillar-name">Talkshow “Cà phê cùng anh/chị khóa trên”</div>
+              <p class="pillar-desc">
+                Một buổi cà phê nhỏ để tân sinh viên nghe những “trải lòng thật”
+                về việc học, đi làm thêm, CLB và sức khỏe tinh thần.
+              <!-- removed closing p -->
+              <span class="pillar-tag">Chia sẻ kinh nghiệm &amp; truyền cảm hứng</span>
+            </div>
+          </div>
+
+          <div class="pillars-actions">
+            <a href="fanpage.html" class="btn-outline">Xem trang chi tiết ↗</a>
+            <a href="workshop.html" class="btn-outline">Xem lịch &amp; nội dung ↗</a>
+            <a href="talkshow.html" class="btn-outline">Xem format talkshow ↗</a>
+          </div>
         </div>
       </section>
 
       <!-- RESOURCES -->
       <section class="section" id="resources">
         <div class="section-header">
-          <p class="section-kicker">TÀI NGUYÊN &amp; CẢM HỨNG</p>
+          <p class="section-kicker">TÀI NGUYÊN &amp; CẢM HỨNG<!-- removed closing p -->
           <h2 class="section-title">Góc tài nguyên ấm áp dành cho sinh viên xa nhà</h2>
           <p class="section-subtitle">
-            Bộ tài nguyên của dự án gồm hình ảnh, infographic và video ngắn – tất cả xoay quanh
-            chủ đề “đi học xa nhưng không đơn độc”. Đây là “kho” để các bạn có thể xem lại bất cứ khi nào thấy nhớ nhà.
-          </p>
+            Bộ tài nguyên của dự án gồm hình ảnh và video ngắn xoay quanh chủ đề
+            “đi học xa nhưng không đơn độc” – tất cả đều lấy trực tiếp từ môi trường ULIS.
+          <!-- removed closing p -->
         </div>
 
         <div class="resources-grid">
           <div class="gallery">
             <div class="gallery-item large">
-              <img src="https://images.pexels.com/photos/1184585/pexels-photo-1184585.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                   alt="Nhóm sinh viên học nhóm trong thư viện">
-              <div class="gallery-label">
+              <img
+                src="https://ulis.vnu.edu.vn/files/uploads/2023/04/2023-04-25_17-19-33.jpg"
+                alt="Sinh viên ULIS tham gia hoạt động tư vấn và giao lưu hướng nghiệp cùng học sinh THPT."
+              />
+              <div class="gallery-label" style="position: relative; display: block; background: rgba(15,23,42,0.75); padding: 0.35rem 0.6rem; border-radius: 0.5rem; margin-top: 0.4rem; color: #fefce8; font-size: 0.78rem;">
                 <span class="gallery-pill-dot"></span>
-                Bộ ảnh “Study together, stay together” – dùng cho fanpage &amp; poster workshop.
+                Sinh viên ULIS giao lưu hướng nghiệp với học sinh THPT – bước chuẩn bị cho hành trình “đi học xa nhà”.
               </div>
             </div>
+
             <div class="gallery-item">
-              <img src="https://images.pexels.com/photos/1181385/pexels-photo-1181385.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                   alt="Sinh viên trò chuyện ngoài trời">
-              <div class="gallery-label">
+              <img
+                src="https://ulis.vnu.edu.vn/files/uploads/2017/07/2024-05-29_16-36-01.jpg"
+                alt="Cổng Trường Đại học Ngoại ngữ – ĐHQGHN trên đường Phạm Văn Đồng."
+              />
+              <div class="gallery-label" style="position: relative; display: block; background: rgba(15,23,42,0.75); padding: 0.35rem 0.6rem; border-radius: 0.5rem; margin-top: 0.4rem; color: #fefce8; font-size: 0.78rem;">
                 <span class="gallery-pill-dot"></span>
-                Visual cho thông điệp: “Chỉ cần mở lời, sẽ luôn có người lắng nghe”.
+                Cổng trường ULIS – nơi bắt đầu hành trình “ngôi nhà thứ hai” của hàng nghìn sinh viên từ khắp mọi miền.
               </div>
             </div>
+
             <div class="gallery-item">
-              <img src="https://images.pexels.com/photos/1595391/pexels-photo-1595391.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                   alt="Thành phố về đêm nhìn từ trên cao">
-              <div class="gallery-label">
+              <img
+                src="https://ulis.vnu.edu.vn/files/uploads/2022/11/09e4653ab42b72752b3a-1024x768.jpg"
+                alt="Khán phòng Vu Đình Liên trong một buổi talkshow định hướng nghề nghiệp cho sinh viên ULIS."
+              />
+              <div class="gallery-label" style="position: relative; display: block; background: rgba(15,23,42,0.75); padding: 0.35rem 0.6rem; border-radius: 0.5rem; margin-top: 0.4rem; color: #fefce8; font-size: 0.78rem;">
                 <span class="gallery-pill-dot"></span>
-                Concept “Hà Nội ban đêm” – nội dung về an toàn &amp; tự chăm sóc khi sống xa nhà.
+                Talkshow tại hội trường Vu Đình Liên – không gian để sinh viên lắng nghe, đặt câu hỏi và chia sẻ câu chuyện của mình.
               </div>
             </div>
           </div>
 
           <div class="card video-card">
-            <h3>Video gợi ý: “5 phút sống xa nhà không hoảng”</h3>
+            <h3>Video gợi ý: “Thăm quan &amp; khám phá ULIS”</h3>
             <p class="muted" style="margin-bottom:0.8rem;">
-              Video ngắn tổng hợp tip sống xa nhà: quản lý tài chính, tìm người bạn đầu tiên,
-              giữ liên lạc với gia đình và chủ động xin trợ giúp khi cần.
+              Video tour khuôn viên Trường Đại học Ngoại ngữ – ĐHQGHN, giúp tân sinh viên hình dung rõ hơn “ngôi nhà mới”
+              trước khi chính thức chuyển tới Hà Nội.
             </p>
 
-            <!-- Đặt file media/ulis-home-demo.mp4 cùng thư mục project -->
-            <video controls src="media/ulis-home-demo.mp4"
-                   poster="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1200">
-              Trình duyệt của bạn không hỗ trợ video.
-            </video>
-
-            <p class="video-note">
-              📌 Gợi ý: nhóm quay một video riêng (dưới 5 phút), lưu với tên
-              <code>ulis-home-demo.mp4</code> trong thư mục <code>media/</code>.
-              Khi mở file HTML trên máy, video sẽ chạy trực tiếp, không cần YouTube.
-            </p>
+            <iframe
+              src="https://www.youtube.com/embed/NMky_a9ie3o"
+              title="Thăm quan và khám phá Trường Đại học Ngoại Ngữ - ĐHQGHN - ULIS"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
           </div>
         </div>
       </section>
@@ -678,41 +769,40 @@
       <!-- COMMUNITY -->
       <section class="section" id="community">
         <div class="section-header">
-          <p class="section-kicker">CỘNG ĐỒNG &amp; TRẢI NGHIỆM</p>
+          <p class="section-kicker">CỘNG ĐỒNG &amp; TRẢI NGHIỆM<!-- removed closing p -->
           <h2 class="section-title">Không chỉ là dự án, mà là một vòng tay chào đón</h2>
           <p class="section-subtitle">
             “ULIS Home away from home” hướng đến việc hình thành một cộng đồng nhiều thế hệ:
             tân sinh viên – sinh viên khóa trên – cựu sinh viên, cùng chia sẻ trải nghiệm và nâng đỡ nhau.
-          </p>
+          <!-- removed closing p -->
         </div>
 
         <div class="testimonials">
           <div class="testimonial">
             <div class="testimonial-name">H., tân sinh viên năm nhất</div>
             <div class="testimonial-tag">Tham gia workshop &amp; nhận bộ kit tân sinh viên</div>
-            <p class="muted">
-              “Em lên Hà Nội khá hoang mang, nhưng sau buổi talkshow em thấy
-              mọi người ai cũng từng ‘lạc lối’ giống mình. Thế là bớt sợ, dám
-              nhắn cho anh/chị hỏi thêm về chuyện học và chuyện nhà trọ.”
-            </p>
+            <p class="testimonial-text">
+              Em lên Hà Nội khá hoang mang, nhưng sau buổi talkshow em thấy mọi người ai cũng từng
+              “lạc lối” giống mình. Thế là bớt sợ, dám nhắn cho anh/chị hỏi thêm về chuyện học
+              và chuyện nhà trọ.
+            <!-- removed closing p -->
           </div>
           <div class="testimonial">
             <div class="testimonial-name">Anh M., sinh viên năm 3</div>
             <div class="testimonial-tag">Tình nguyện viên đồng hành</div>
-            <p class="muted">
-              “Được làm ‘anh hàng xóm’ cho các em khóa dưới rất vui. Những câu chuyện
-              tưởng nhỏ như đi chợ ở đâu, đi tuyến bus nào… lại giúp tụi em cảm thấy
-              có người để dựa vào trong những tuần đầu nhập học.”
-            </p>
+            <p class="testimonial-text">
+              Được làm “anh hàng xóm” cho các em khóa dưới rất vui.
+              Những câu chuyện tưởng nhỏ như đi chợ ở đâu, đi tuyến bus nào…
+              lại giúp tụi em cảm thấy có người để dựa vào trong những tuần đầu nhập học.
+            <!-- removed closing p -->
           </div>
           <div class="testimonial">
             <div class="testimonial-name">Cô T., giảng viên ULIS</div>
             <div class="testimonial-tag">Cố vấn học tập</div>
-            <p class="muted">
-              “Nếu sinh viên có thêm một kênh tin cậy để chia sẻ khó khăn,
-              nhà trường cũng dễ lắng nghe và hỗ trợ hơn. Dự án này kết nối rất tốt
-              giữa sinh viên, CLB và các phòng ban.”
-            </p>
+            <p class="testimonial-text">
+              Nếu sinh viên có thêm một kênh tin cậy để chia sẻ khó khăn, nhà trường cũng dễ
+              lắng nghe và hỗ trợ hơn. Dự án này kết nối rất tốt giữa sinh viên, CLB và các phòng ban.
+            <!-- removed closing p -->
           </div>
         </div>
       </section>
@@ -720,62 +810,62 @@
       <!-- FAQ -->
       <section class="section" id="faq">
         <div class="section-header">
-          <p class="section-kicker">FAQ</p>
+          <p class="section-kicker">FAQ<!-- removed closing p -->
           <h2 class="section-title">Câu hỏi thường gặp về dự án</h2>
           <p class="section-subtitle">
             Một vài thắc mắc mà sinh viên và thầy cô thường đặt ra khi nghe tới “ULIS Home away from home”.
-          </p>
+          <!-- removed closing p -->
         </div>
 
-        <div class="faq-list">
-          <div>
-            <div class="faq-item">
-              <div class="faq-question">1. Dự án này dành cho ai?</div>
-              <p class="muted">
-                Dự án ưu tiên tân sinh viên và sinh viên ngoại tỉnh đang học tại ULIS,
-                nhưng các bạn sinh viên năm trên cũng được khuyến khích tham gia với vai trò người đồng hành.
-              </p>
-            </div>
-            <div class="faq-item">
-              <div class="faq-question">2. Tham gia có mất phí không?</div>
-              <p class="muted">
-                Các hoạt động chính (fanpage, workshop, talkshow) đều được thiết kế miễn phí cho sinh viên.
-                Một số hoạt động có quà tặng/kit sẽ kèm theo đăng ký trước để ban tổ chức chuẩn bị tốt hơn.
-              </p>
-            </div>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <div class="faq-question">1. Dự án này dành cho ai?</div>
+            <p class="muted">
+              Dự án ưu tiên tân sinh viên và sinh viên ngoại tỉnh đang học tại ULIS,
+              nhưng các bạn sinh viên năm trên cũng được khuyến khích tham gia với vai trò người đồng hành.
+            <!-- removed closing p -->
           </div>
-          <div>
-            <div class="faq-item">
-              <div class="faq-question">3. Làm sao để trở thành mentor/anh chị đồng hành?</div>
-              <p class="muted">
-                Nhóm dự án sẽ mở form đăng ký dành cho sinh viên năm 2 trở lên.
-                Sau vòng phỏng vấn nhẹ, các bạn được tập huấn ngắn về lắng nghe – hỗ trợ cơ bản
-                trước khi đồng hành với tân sinh viên.
-              </p>
-            </div>
-            <div class="faq-item">
-              <div class="faq-question">4. Sau giai đoạn 2025–2026, dự án có tiếp tục không?</div>
-              <p class="muted">
-                Mục tiêu dài hạn là chuyển bộ tài nguyên và mô hình hoạt động cho các CLB/đơn vị trong trường,
-                để “ULIS Home away from home” trở thành một chương trình đón tân sinh viên thường niên.
-              </p>
-            </div>
-            <p class="faq-note">
-              Nếu có thêm câu hỏi, sinh viên có thể gửi về fanpage hoặc liên hệ trực tiếp nhóm qua email/điện thoại ở phần dưới.
-            </p>
+
+          <div class="faq-item">
+            <div class="faq-question">2. Tham gia có mất phí không?</div>
+            <p class="muted">
+              Các hoạt động chính (fanpage, workshop, talkshow) đều được thiết kế miễn phí cho sinh viên.
+              Một số hoạt động có quà tặng/kit sẽ kèm theo đăng ký trước để ban tổ chức chuẩn bị tốt hơn.
+            <!-- removed closing p -->
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">3. Làm sao để trở thành mentor/anh chị đồng hành?</div>
+            <p class="muted">
+              Nhóm dự án sẽ mở form đăng ký dành cho sinh viên năm 2 trở lên.
+              Sau vòng phỏng vấn nhẹ, các bạn được tập huấn ngắn về lắng nghe – hỗ trợ cơ bản
+              trước khi đồng hành với tân sinh viên.
+            <!-- removed closing p -->
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">4. Sau giai đoạn 2025–2026, dự án có tiếp tục không?</div>
+            <p class="muted">
+              Mục tiêu dài hạn là chuyển bộ tài nguyên và mô hình hoạt động cho các CLB/đơn vị trong trường,
+              để “ULIS Home away from home” trở thành một chương trình đón tân sinh viên thường niên.
+            <!-- removed closing p -->
           </div>
         </div>
+
+        <p class="faq-note">
+          Nếu có thêm câu hỏi, sinh viên có thể gửi về fanpage hoặc liên hệ trực tiếp nhóm qua email/điện thoại ở phần dưới.
+        <!-- removed closing p -->
       </section>
 
       <!-- TEAM & CONTACT -->
       <section class="section" id="team">
         <div class="section-header">
-          <p class="section-kicker">ĐƠN VỊ THỰC HIỆN</p>
+          <p class="section-kicker">ĐƠN VỊ THỰC HIỆN<!-- removed closing p -->
           <h2 class="section-title">Nhóm 24 – Lớp CNTT&amp;TT FLF1007</h2>
           <p class="section-subtitle">
             Chúng mình đều từng là sinh viên xa nhà, hiểu cảm giác vừa háo hức vừa lo lắng
             khi bước chân vào giảng đường đại học. Dự án được xây dựng từ chính trải nghiệm đó.
-          </p>
+          <!-- removed closing p -->
         </div>
 
         <div class="card">
@@ -801,20 +891,20 @@
             <p class="muted">
               Dự án mong nhận được sự hỗ trợ trong việc truyền thông, chuyên môn nội dung
               và kết nối với các nguồn lực để duy trì hoạt động lâu dài, không chỉ dừng lại ở một học kỳ.
-            </p>
+            <!-- removed closing p -->
             <div class="hero-actions" style="margin-top:1rem;">
               <button class="btn-primary">Tải đề xuất chi tiết (PDF)</button>
               <button class="btn-ghost" onclick="window.scrollTo({top:0, behavior:'smooth'})">Quay lại đầu trang ↑</button>
             </div>
           </div>
           <div class="muted">
-            <p><strong>Đơn vị chủ quản:</strong><br/>Trường ĐH Ngoại ngữ – ĐHQGHN</p>
-            <p style="margin-top:0.4rem;"><strong>Đơn vị thực hiện:</strong><br/>Nhóm 24 – Lớp CNTT&amp;TT FLF1007</p>
+            <p><strong>Đơn vị chủ quản:</strong><br/>Trường ĐH Ngoại ngữ – ĐHQGHN<!-- removed closing p -->
+            <p style="margin-top:0.4rem;"><strong>Đơn vị thực hiện:</strong><br/>Nhóm 24 – Lớp CNTT&amp;TT FLF1007<!-- removed closing p -->
             <p style="margin-top:0.4rem;"><strong>Đầu mối liên hệ:</strong><br/>
               Nguyễn Ngọc Hà – Nhóm trưởng<br/>
               Email: <a href="mailto:ngngocha2516@gmail.com">ngngocha2516@gmail.com</a><br/>
               SĐT: 0763 573 563
-            </p>
+            <!-- removed closing p -->
           </div>
         </div>
       </section>
@@ -858,14 +948,15 @@
   });
 
   navLinks.forEach(link=>{
-    link.addEventListener('click',function(){
-      navLinks.forEach(l=>l.classList.remove('active'));
-      this.classList.add('active');
-      const id=this.getAttribute('href');
-      if(id && id.startsWith('#')){
-        const target=document.querySelector(id);
+    link.addEventListener('click',function(ev){
+      const href=this.getAttribute('href');
+      if(href && href.startsWith('#')){
+        ev.preventDefault();
+        const target=document.querySelector(href);
         if(target) target.scrollIntoView({behavior:'smooth'});
       }
+      navLinks.forEach(l=>l.classList.remove('active'));
+      this.classList.add('active');
       if(window.innerWidth<=900) closeSidebar();
     });
   });
